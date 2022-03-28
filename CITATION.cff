@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "Affirmative Sampling: Reference Python Implementation"
+version: 1.0.0
+date-released: 2022-03-28
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Lumbroso
+    given-names: Jérémie
+    email: lumbroso@cs.princeton.edu
+    affiliation: Department of Computer Science, Princeton University
+    orcid: http://orcid.org/0000-0002-5563-687X
+  - family-names: Martínez
+    given-names: Conrado
+    email: conrado@cs.upc.edu
+    affiliation: Department of Computer Science, Universitat Politècnica de Catalunya
+    orcid: https://orcid.org/0000-0003-1302-9067
+license: LGPL-3.0-or-later
+repository-code: "https://github.com/jlumbroso/affirmative-sampling"
+abstract: >-
+  Affirmative Sampling
+  is a practical and efficient novel
+  algorithm to obtain random samples of distinct elements from a data
+  stream. Its most salient feature is that the size $S$ of the
+  sample will, on expectation, grow with the (unknown) number $n$ of
+  distinct elements in the data stream. As any distinct element has
+  the same probability to be sampled, and the sample size is greater
+  when the ``diversity'' (the number of distinct elements) is greater,
+  the samples that Affirmative Sampling delivers are more
+  representative than those produced by any scheme where the sample
+  size is fixed a priori---hence its name. This is a reference
+  implementation in Python, to illustrate how the algorithm works
+  and to only for some basic experimentation.
