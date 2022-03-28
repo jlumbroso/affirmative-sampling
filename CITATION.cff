@@ -2,6 +2,7 @@ cff-version: 1.2.0
 title: "Affirmative Sampling: Reference Python Implementation"
 version: 1.0.0
 date-released: 2022-03-28
+type: software
 message: "If you use this software, please cite it as below."
 authors:
   - family-names: Lumbroso
