@@ -37,29 +37,28 @@ commands =
 """
 
 [tool.poetry.dependencies]
-# codepost = "^0.2.25"
 python = "^3.8"
-# tqdm = "^4.48.2"
+randomhash = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
-codecov = "^2.1.10"
+codecov = "^2.1.12"
 ipykernel = "^5.3.4"
 ipywidgets = "^7.5.1"
 pytest = "^5.2"
-pytest-cov = "^2.10.1"
-pytest-mock = "^3.3.1"
+pytest-cov = "^3.0.0"
+# pytest-mock = "^3.3.1"
 pytest-repeat = "^0.9.1"
 pytest-subtests = "^0.3.2"
-sphinx = "^3.3.0"
-sphinx-autodoc-typehints = "^1.11.1"
-sphinx-rtd-theme = "^0.5.0"
+# sphinx = "^3.3.0"
+# sphinx-autodoc-typehints = "^1.11.1"
+# sphinx-rtd-theme = "^0.5.0"
 tox = "^3.20.1"
 tox-poetry-dev-dependencies = "^0.0.5"
 
 # dependabot dependency pins (vulnerability warnings)
 # babel = "^2.10.1"
 # bleach = "^3.3.0"
-# ipython = "^7.31.1"
+ipython = "^7.31.1"
 # jinja2 = "^3.1.2"
 # notebook = "^6.4.10"
 # py = "^1.11.0"
