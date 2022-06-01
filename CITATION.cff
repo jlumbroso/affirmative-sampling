@@ -16,7 +16,7 @@ authors:
     email: conrado@cs.upc.edu
     affiliation: Department of Computer Science, Universitat Politècnica de Catalunya
     orcid: https://orcid.org/0000-0003-1302-9067
-license: LGPL-3.0-or-later
+license: MIT
 repository-code: "https://github.com/jlumbroso/affirmative-sampling"
 abstract: >-
   Affirmative Sampling
