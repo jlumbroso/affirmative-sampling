@@ -1,5 +1,6 @@
 # Affirmative Sampling: Reference Implementation
 
+[![DOI](https://zenodo.org/badge/474830155.svg)](https://zenodo.org/badge/latestdoi/474830155)
 [![pytest](https://github.com/jlumbroso/affirmative-sampling/actions/workflows/continuous-integration.yaml/badge.svg)](https://github.com/jlumbroso/affirmative-sampling/actions/workflows/continuous-integration.yaml)
 [![codecov](https://codecov.io/gh/jlumbroso/affirmative-sampling/branch/main/graph/badge.svg?token=4S8TD999YC)](https://codecov.io/gh/jlumbroso/affirmative-sampling)
 
