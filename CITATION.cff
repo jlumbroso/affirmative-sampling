@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Affirmative Sampling: Reference Python Implementation"
+title: "Affirmative Sampling: Reference Implementation"
 doi: 10.5281/zenodo.6391177
 version: 1.0.0
 date-released: 2022-03-28
@@ -26,9 +26,9 @@ abstract: >-
   sample will, on expectation, grow with the (unknown) number $n$ of
   distinct elements in the data stream. As any distinct element has
   the same probability to be sampled, and the sample size is greater
-  when the ``diversity'' (the number of distinct elements) is greater,
+  when the "diversity" (the number of distinct elements) is greater,
   the samples that Affirmative Sampling delivers are more
   representative than those produced by any scheme where the sample
-  size is fixed a priori---hence its name. This is a reference
-  implementation in Python, to illustrate how the algorithm works
-  and to only for some basic experimentation.
+  size is fixed a priori—hence its name. This repository contains
+  a reference implementation, in Python, to illustrate how the algorithm
+  works and to showcase some basic experimentation.
