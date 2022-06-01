@@ -3,29 +3,30 @@ name: "pytest"
 jobs:
   pytest:
     name: pytest
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.8]
+        poetry-version: [1.1.13]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@master
-      - name: Setup Python & Poetry and install project
-        uses: abatilo/actions-poetry@v1.5.0
+
+      - uses: actions/setup-python@v2
         with:
-          python_version: 3.8.0
-          poetry_version: 1.1.13
-          working_directory: "." # optional, defaults to ".'
-          args: install
+          python-version: ${{ matrix.python-version }}
+
+      - name: Setup Poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+
+      - name: Install project
+        run: poetry install
 
       - name: Run pytest
-        uses: abatilo/actions-poetry@v1.5.0
-        with:
-          python_version: 3.8.0
-          poetry_version: 1.1.13
-          working_directory: "."
-          args: run python -m pytest --cov=affirmative_sampling --cov-branch tests/
+        run: poetry run python -m pytest --cov=affirmative_sampling --cov-branch tests/
 
       - name: Run codecov to upload report to site
-        uses: abatilo/actions-poetry@v1.5.0
-        with:
-          python_version: 3.8.0
-          poetry_version: 1.1.13
-          working_directory: "."
-          args: run codecov -t ${{ secrets.CODECOV_TOKEN }}
+        run: poetry run codecov -t ${{ secrets.CODECOV_TOKEN }}
