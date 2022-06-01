@@ -11,10 +11,10 @@ _mobydick_text = requests.get(
 # remove all non-alphabetic characters
 
 _mobydick_normalized_text = re.sub(
-    "\s+",
+    r"\s+",
     " ",
     re.sub(
-        "[^a-zA-Z\s]+",
+        r"[^a-zA-Z\s]+",
         "",
         _mobydick_text)).lower()
 

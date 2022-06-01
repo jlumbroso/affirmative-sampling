@@ -8,11 +8,11 @@ Lumbroso, Jéremie, and Conrado, Martínez. "Affirmative Sampling:
     Schloss Dagstuhl—Leibniz-Zentrum fuer Informatik, 2022.
 """
 
-__version__ = "0.1.0"
+from .algorithm import affirmative_sampling
+__version__ = "1.0.0"
 __author__ = "Jérémie Lumbroso <lumbroso@cs.princeton.edu>"
 
 version_info = tuple(int(v) if v.isdigit()
                      else v for v in __version__.split('.'))
 
 # want to make this available to top-level package
-from .algorithm import affirmative_sampling

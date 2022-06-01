@@ -20,7 +20,7 @@ license = "LGPL-3.0-or-later"
 name = "affirmative-sampling"
 readme = "README.md"
 repository = "https://github.com/jlumbroso/affirmative-sampling"
-version = "0.1.0"
+version = "1.0.0"
 
 [tool.tox]
 legacy_tox_ini = """
@@ -56,8 +56,8 @@ tox = "^3.20.1"
 tox-poetry-dev-dependencies = "^0.0.5"
 
 # dependabot dependency pins (vulnerability warnings)
-ipython = "^7.31.1"
 autopep8 = "^1.6.0"
+ipython = "^7.31.1"
 
 [build-system]
 build-backend = "poetry.masonry.api"
