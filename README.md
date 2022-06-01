@@ -17,32 +17,32 @@ This repository contains a reference implementation, in Python, to illustrate ho
 ## Intuition
 
 ```
-REPRESENTATION OF THE SAMPLE DURING THE ALGORITHM                  |   POSSIBLE OUTCOMES FOR A NEW ELEMENT y = hash(z)
-                                                                   |
-      High hash values                                             |
-             ^                                                     |
-             |                                                     |
-             |                                                     |
-+-------------------------+  <-- max hash so far                   |
-|                         |      (no need to keep/compute this)    |
-| sample_core             |                                        |   <-- y >= k-th hash   ==> EXPAND:
-| size = k (always)       |                                        |                              ADD z to sample_core
-|                         |                                        |                              MOVE z_kth_hash from sample_core to sample_xtra
-+-------------------------+  <-- k-th hash                         |                              total size ++
-|                         |      = min_hash in sample_core         |
-|                         |                                        |
-| sample_xtra             |                                        |
-| size = variable = S - k |                                        |   <-- kth_hash > y &&  ==> REPLACE z_min_hash with z:
-|                         |                                        |       y > min_hash           ADD z to sample_xtra
-|                         |                                        |                              REMOVE z_min_hash from sample_xtra
-|                         |                                        |
-+-------------------------+                                        |
-             |                   = min_hash in sample_xtra         |
-             |                                                     |   <-- y <= min_hash    ==> DISCARD z
-             |                                                     |
-             v                                                     |
-      Low hash values                                              |
-                                                                   |
+REPRESENTATION OF THE SAMPLE DURING THE ALGORITHM          | OUTCOMES FOR NEW ELEMENT z
+                                                           |       y = hash(z)
+      High hash values                                     |
+             ^                                             |
+             |                                             |
+             |                                             |
++-------------------------+  <-- max hash so far           |
+|                         |      (no need to track this)   | <-- y >= k-th hash
+| sample_core             |                                |
+| size = k (always)       |                                |  EXPAND:
+|                         |                                |    ADD z to sample_core
++-------------------------+  <-- k-th hash                 |    MOVE z_kth_hash from
+|                         |      = min_hash in sample_core |      sample_core to sample_xtra
+|                         |                                |    total size ++
+| sample_xtra             |                                |
+| size = variable = S - k |                                | <-- kth_hash > y > min_hash
+|                         |                                |
+|                         |                                |  REPLACE z_min_hash with z:
+|                         |                                |    ADD z to sample_xtra
++-------------------------+                                |    REMOVE z_min_hash from sample_xtra
+             |                   = min_hash in sample_xtra |
+             |                                             | <-- y <= min_hash
+             |                                             |
+             v                                             |  DISCARD z
+      Low hash values                                      |
+                                                           |
 ```
 
 ## License
