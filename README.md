@@ -1,6 +1,9 @@
 # Affirmative Sampling: Reference Implementation
 
-This repository contains a reference implementation, in Python, of the _Affirmative Sampling_ algorithm by Jérémie Lumbroso and Conrado Martínez (2022).
+[![pytest](https://github.com/jlumbroso/affirmative-sampling/actions/workflows/continuous-integration.yaml/badge.svg)](https://github.com/jlumbroso/affirmative-sampling/actions/workflows/continuous-integration.yaml)
+[![codecov](https://codecov.io/gh/jlumbroso/affirmative-sampling/branch/main/graph/badge.svg?token=4S8TD999YC)](https://codecov.io/gh/jlumbroso/affirmative-sampling)
+
+This repository contains a reference implementation, in Python, of the _Affirmative Sampling_ algorithm by Jérémie Lumbroso and Conrado Martínez (2022), as well as the original paper, accepted at the Analysis of Algorithms 2022 edition in Philadelphia.
 
 ## Abstract
 
@@ -8,9 +11,17 @@ _Affirmative Sampling_ is a practical and efficient novel algorithm to obtain ra
 
 Its most salient feature is that the size $S$ of the sample will, on expectation, **grow with the (unknown) number $n$ of distinct elements in the data stream**.
 
-As any distinct element has the same probability to be sampled, and the sample size is greater when the "diversity" (the number of distinct elements) is greater, the samples that _Affirmative Sampling_ delivers are more representative than those produced by any scheme where the sample size is fixed _a priori_—hence its name.
+As any distinct element has the same probability to be sampled, and the sample size is greater when the "diversity" (the number of distinct elements) is greater, the samples that _Affirmative Sampling_ delivers are more representative than those produced by any scheme where the sample size is fixed _a priori_—hence its name. This repository contains a reference implementation, in Python, to illustrate how the algorithm works and showcase some basic experimentation.
 
-This repository contains a reference implementation, in Python, to illustrate how the algorithm works and showcase some basic experimentation.
+## Installation
+
+This package is available on PyPI and can be installed through the typical means:
+
+```shell
+$ pip install affirmative_sampling
+```
+
+The hash functions that are used in this package come from [the `randomhash` Python package](https://github.com/jlumbroso/python-random-hash).
 
 ## Historical Context
 
@@ -24,9 +35,9 @@ Sampling is a very important tool, because it makes it possible to infer informa
 
 - **Affirmative Sampling**: This novel algorithm conserves the properties of the Distinct Sampling family of algorithms (because it also uses a hash function to be insensitive to repeated elements), but allows the target size of the sample to be a function of $n$, the number of distinct elements in the source data set—to be precise, the size of the sample is supposed to be $~k \cdot \log \frac n k + k$, logarithmic in the number of distinct elements. This is important, because the accuracy of estimates inferred from a random sample depend on how representative the sample is of the diversity of the source data set, and Affirmative Sampling calibrates the size of the sample to deliver accurate estimates.
 
-## Intuition
+## Intuition of How the Sample Grows
 
-The intuition of the algorithm is that the sample is divided into two parts: A fixed-size part (`sample_core`) that will always be of size $k$; and a variable-size part (`sample_xtra`) that will grow slowly throughout the process algorithm. Depending on its hashed value, a new element $z$ might either be DISCARDED, REPLACE an existing element of the sample, or EXPAND the variable-size sample, see diagram below:
+The novel property of the algorithm is that it grows in a controlled way, that is related to the logarithm of the number of distinct elements. The sample is divided into two parts: A fixed-size part (`sample_core`) that will always be of size $k$; and a variable-size part (`sample_xtra`) that will grow slowly throughout the process of the algorithm. Depending on its hashed value, a new element $z$ might either be DISCARDED, REPLACE an existing element of the sample, or EXPAND the variable-size sample, see diagram below:
 
 ```
 REPRESENTATION OF THE SAMPLE DURING THE ALGORITHM         |   OUTCOMES FOR NEW ELEMENT z
@@ -56,6 +67,8 @@ REPRESENTATION OF THE SAMPLE DURING THE ALGORITHM         |   OUTCOMES FOR NEW E
        Low hash values                                    |
                                                           |
 ```
+
+As the paper illustrates, it is also possible to design variants of the Affirmative Sampling algorithm, with a growth rate that is different than logarithmic.
 
 ## License
 

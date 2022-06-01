@@ -13,3 +13,6 @@ __author__ = "Jérémie Lumbroso <lumbroso@cs.princeton.edu>"
 
 version_info = tuple(int(v) if v.isdigit()
                      else v for v in __version__.split('.'))
+
+# want to make this available to top-level package
+from .algorithm import affirmative_sampling

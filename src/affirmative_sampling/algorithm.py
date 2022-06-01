@@ -4,8 +4,30 @@ import typing
 import randomhash
 
 
-def affirmativeSampling(tokens: typing.List[str], k: int):
+def affirmative_sampling(
+    tokens: typing.List[str],
+    k: int,
+    seed: typing.Optional[int] = None,
+) -> typing.Dict[str, typing.Any]:
+    """
+    Returns a random sample of the stream of tokens ``tokens``, using the
+    algorithm "Affirmative Sampling" by Jérémie Lumbroso and Conrado
+    Martínez (2022).
+
+    :param tokens: A list of string tokens
+    :type tokens: typing.List[str]
+    :param k: The parameter of Affirmative Sampling that controls the fixed part of the sample
+    :type k: int
+    :param seed: A seed for the pseudo-random number generator (optional, time-seeded by default)
+    :type seed: typing.Optional[int]
+
+    :return: A dictionary containing a cardinality estimate, as well as a random sample of the stream of tokens
+    :rtype: typing.Dict[str, typing.Any]
+    """
     
+    # initialize the PRNG
+    prng = randomhash.RandomHashFamily(seed=seed)
+
     # initialize the sample
     
     sample_core = set()
@@ -29,7 +51,7 @@ def affirmativeSampling(tokens: typing.List[str], k: int):
     
     # compute current minimum and kth largest element of the sample
     
-    _g = lambda z: (randomhash.hash(z), z)
+    _g = lambda z: (prng.hash(z), z)
     min_hash, z_min_hash = min(map(_g, sample_core))  # sample_core here because sample_xtra is empty
     kth_hash, z_kth_hash = min(map(_g, sample_core))
 
@@ -47,7 +69,7 @@ def affirmativeSampling(tokens: typing.List[str], k: int):
         
         # (B) z is not in the sample, so compute y=hash(z)
         
-        y = randomhash.hash(z)
+        y = prng.hash(z)
  
         # (B.1) if y is smaller than the min hash value in S
         if y < min_hash:
