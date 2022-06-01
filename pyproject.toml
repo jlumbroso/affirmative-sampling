@@ -57,6 +57,7 @@ tox-poetry-dev-dependencies = "^0.0.5"
 
 # dependabot dependency pins (vulnerability warnings)
 ipython = "^7.31.1"
+autopep8 = "^1.6.0"
 
 [build-system]
 build-backend = "poetry.masonry.api"
