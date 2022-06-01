@@ -10,7 +10,7 @@ classifiers = [
   "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-description = ""
+description = "Reference implementation of the Affirmative Sampling algorithm by Jérémie Lumbroso and Conrado Martínez (2022)."
 homepage = "https://github.com/jlumbroso/affirmative-sampling"
 include = [
   "README.md",

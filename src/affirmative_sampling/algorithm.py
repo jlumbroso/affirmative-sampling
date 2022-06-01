@@ -1,5 +1,4 @@
 
-import math
 import typing
 
 import randomhash
@@ -90,17 +89,14 @@ def affirmativeSampling(tokens: typing.List[str], k: int):
             min_hash, z_min_hash = min(map(_g, sample_xtra))
             
     
-    # compute estimators
+    # compute estimators:
+    # - Recordinality (less accurate, so we do not share it with the user)
+    # - K-mean value estimator, with the Affirmative Sampling sample
     recordinality = k*(1 + 1/k)**(len(sample_freqs)-k+1)
     af_kmv = (len(sample_freqs)-1)/(1-randomhash.int_to_real(min_hash))
-    expected_sample_size = k*math.log(n/k) + k
     
     return {
-        "cardinality": {
-            "recordinality": recordinality,
-            "af-kmv": af_kmv,
-        },
-        "expectedSampleSize": expected_sample_size,
+        "cardinalityEstimate": af_kmv,
         "sampleSize": len(sample_freqs),
         "sample": sample_freqs
     }
