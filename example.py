@@ -111,8 +111,8 @@ EXAMPLE 2: Number of mice (freq. less or equal to {})
 
 - Size of sample: {}
    - Expected size of sample: {}
-   - Tokens in sample without 'e': {}
-   - Proportion of tokens in sample without 'e': {}%
+   - Number of mice in sample: {}
+   - Proportion of mice in sample: {}%
 """.format(
     MICE_THRESHOLD,
     TOTAL_number_of_distinct_mice,

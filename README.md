@@ -91,8 +91,8 @@ EXAMPLE 2: Number of mice (freq. less or equal to 5)
 
 - Size of sample: 648
    - Expected size of sample: 629.64
-   - Tokens in sample without 'e': 556
-   - Proportion of tokens in sample without 'e': 85.8%
+   - Number of mice in sample: 556
+   - Proportion of mice in sample: 85.8%
 
 SAMPLE
 ======
